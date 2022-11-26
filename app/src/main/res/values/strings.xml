@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Image Compressor</string>
+    <string name="infotxt">Image name: \nImage size: \nImage type: Jpeg</string>
+</resources>
