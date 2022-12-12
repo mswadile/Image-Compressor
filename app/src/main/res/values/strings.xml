@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Image Compressor</string>
-    <string name="infotxt">Image name: \nImage size: \nImage type: Jpeg</string>
+    <string name="infotxt">Image name: Undefined\nImage size: 0 mb\nImage type: Jpeg</string>
+    <string name="instr_to_upload">Upload Image by clicking below Button</string>
+    <string name="instr_to_upload2">Upload Compressed Image by clicking below Button</string>
+    <string name="com_title">Compress Image</string>
+    <string name="ext_img">Extract Image</string>
+    <string name="upload">Upload</string>
+    <string name="compress">Compress</string>
+    <string name="extract">Extract</string>
 </resources>
