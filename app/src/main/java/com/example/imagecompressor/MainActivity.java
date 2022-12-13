@@ -11,6 +11,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -45,45 +46,8 @@ public class MainActivity extends AppCompatActivity {
             imageResultLauncher.launch(intent);
         });
 
-        //Onclik listener for compress button
-        compressBtn.setOnClickListener(view -> {
-            HashMap<Integer,Double> pixmap = new HashMap<Integer,Double>();
-            if(!selected){
-                Toast msg  = Toast.makeText(getApplicationContext(),"Please select Image First",Toast.LENGTH_SHORT);
-                msg.show();
-            }else{
-                int height = bmap.getHeight();
-                int width = bmap.getWidth();
-                long numPix = (long) height * width;
-                for(int i=0;i<height;i++) {
-                    for (int j = 0; j < width; j++) {
-                        int pixel = bmap.getPixel(j, i);
-                        if (pixmap.containsKey(pixel)) {
-                            double tempPix = pixmap.get(pixel);
-                            tempPix++;
-                            pixmap.replace(pixel, tempPix);
-                        } else {
-                            pixmap.put(pixel, 1.0);
-                        }
-                    }
-                }
-
-                /* calculate probability of each pixel occurence
-                 prob_pixel = numpix/totalnum_pixels
-                 prob_pixel == probability of occurence of certain pixel
-                 numpix == number of times pixel repeated
-                 totalnum_pixels == total number of pixels in image
-                 */
-
-                for(Map.Entry<Integer,Double> tMapE : pixmap.entrySet()) {
-                    pixmap.replace(tMapE.getKey(),tMapE.getValue()/numPix);
-                }
-
-                // Build a huffman tree
-
-
-            }
-        });
+        //Onclick listener for compress button
+        compressBtn.setOnClickListener(this::onClick);
 
     }
 
@@ -108,4 +72,43 @@ public class MainActivity extends AppCompatActivity {
     );
 
 
+    private void onClick(View view) {
+        HashMap<Integer, Double> pixmap = new HashMap<>();
+        if (!selected) {
+            Toast msg = Toast.makeText(getApplicationContext(), "Please select Image First", Toast.LENGTH_SHORT);
+            msg.show();
+        } else {
+            int height = bmap.getHeight();
+            int width = bmap.getWidth();
+            long numPix = (long) height * width;
+            for (int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
+                    int pixel = bmap.getPixel(j, i);
+                    if (pixmap.containsKey(pixel)) {
+                        double tempPix;
+                        tempPix = pixmap.get(pixel);
+                        tempPix++;
+                        pixmap.replace(pixel, tempPix);
+                    } else {
+                        pixmap.put(pixel, 1.0);
+                    }
+                }
+            }
+
+            /* calculate probability of each pixel occurence
+             prob_pixel = numpix/totalnum_pixels
+             prob_pixel == probability of occurence of certain pixel
+             numpix == number of times pixel repeated
+             totalnum_pixels == total number of pixels in image
+             */
+
+            for (Map.Entry<Integer, Double> tMapE : pixmap.entrySet()) {
+                pixmap.replace(tMapE.getKey(), tMapE.getValue() / numPix);
+            }
+
+            // Build a huffman tree
+
+
+        }
+    }
 }

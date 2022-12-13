@@ -8,4 +8,5 @@
     <string name="upload">Upload</string>
     <string name="compress">Compress</string>
     <string name="extract">Extract</string>
+    <string name="img_dsr">Uploaded Image</string>
 </resources>
