@@ -24,91 +24,27 @@ import java.util.Objects;
 
 
 public class MainActivity extends AppCompatActivity {
-    private ImageView imageView;
-    private Bitmap bmap;
-    private boolean selected = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Button uploadBtn1,compressBtn;
-        uploadBtn1 = findViewById(R.id.uploadBtn1);
-        imageView = findViewById(R.id.imageView);
-        compressBtn = findViewById(R.id.compressBtn);
-
-        // onclick Listener for Upload button
-        uploadBtn1.setOnClickListener(view -> {
-            //set intent
-            Intent intent = new Intent(Intent.ACTION_PICK);
-            intent.setType("image/*");
-            imageResultLauncher.launch(intent);
-        });
-
-        //Onclick listener for compress button
-        compressBtn.setOnClickListener(this::onClick);
-
+        Button comBtn;
+        Button exBtn;
+        comBtn = findViewById(R.id.comBtn);
+        exBtn = findViewById(R.id.exBtn);
+        comBtn.setOnClickListener(this::comClick);
+        exBtn.setOnClickListener(this::exClick);
     }
 
-    //handling intend
-    ActivityResultLauncher<Intent> imageResultLauncher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            result -> {
-                if(result.getResultCode() == Activity.RESULT_OK){
-                    Intent data  = result.getData();
-                    Uri selectedImage = Objects.requireNonNull(data).getData();
-                    InputStream imageStream = null;
-                    try{
-                        imageStream = getContentResolver().openInputStream(selectedImage);
-                    } catch(FileNotFoundException e){
-                        e.printStackTrace();
-                    }
-                    bmap = BitmapFactory.decodeStream(imageStream);
-                    selected = true;
-                    imageView.setImageURI(selectedImage);
-                }
-            }
-    );
+    private void comClick(View view){
+        Intent compress = new Intent(MainActivity.this, compress.class);
+        startActivity(compress);
+    }
 
-
-    private void onClick(View view) {
-        HashMap<Integer, Double> pixmap = new HashMap<>();
-        if (!selected) {
-            Toast msg = Toast.makeText(getApplicationContext(), "Please select Image First", Toast.LENGTH_SHORT);
-            msg.show();
-        } else {
-            int height = bmap.getHeight();
-            int width = bmap.getWidth();
-            long numPix = (long) height * width;
-            for (int i = 0; i < height; i++) {
-                for (int j = 0; j < width; j++) {
-                    int pixel = bmap.getPixel(j, i);
-                    if (pixmap.containsKey(pixel)) {
-                        double tempPix;
-                        tempPix = pixmap.get(pixel);
-                        tempPix++;
-                        pixmap.replace(pixel, tempPix);
-                    } else {
-                        pixmap.put(pixel, 1.0);
-                    }
-                }
-            }
-
-            /* calculate probability of each pixel occurence
-             prob_pixel = numpix/totalnum_pixels
-             prob_pixel == probability of occurence of certain pixel
-             numpix == number of times pixel repeated
-             totalnum_pixels == total number of pixels in image
-             */
-
-            for (Map.Entry<Integer, Double> tMapE : pixmap.entrySet()) {
-                pixmap.replace(tMapE.getKey(), tMapE.getValue() / numPix);
-            }
-
-            // Build a huffman tree
-
-
-        }
+    private void exClick(View view){
+        Intent extract = new Intent(MainActivity.this, extract.class);
+        startActivity(extract);
     }
 }
