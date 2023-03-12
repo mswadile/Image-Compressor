@@ -1,0 +1,121 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.imagecompressor"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="27"
+8-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="32" />
+9-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.CAMERA" />
+11-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:5:5-65
+11-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:5:22-62
+12    <uses-permission android:name="ANDROID.PERMISSION.READ_EXTERNAL_STORAGE" />
+12-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:6:5-80
+12-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:6:22-77
+13
+14    <application
+14-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:8:5-47:19
+15        android:allowBackup="true"
+15-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:9:9-35
+16        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+16-->[androidx.core:core:1.8.0] C:\Users\Manish\.gradle\caches\transforms-3\87a796fe63836d99a2198ac6a6284cb3\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
+17        android:dataExtractionRules="@xml/data_extraction_rules"
+17-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:10:9-65
+18        android:debuggable="true"
+19        android:extractNativeLibs="false"
+20        android:fullBackupContent="@xml/backup_rules"
+20-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:11:9-54
+21        android:icon="@mipmap/ic_launcher"
+21-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:12:9-43
+22        android:label="@string/app_name"
+22-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:13:9-41
+23        android:roundIcon="@mipmap/ic_launcher_round"
+23-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:14:9-54
+24        android:supportsRtl="true"
+24-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:15:9-35
+25        android:testOnly="true"
+26        android:theme="@style/Theme.ImageCompressor" >
+26-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:16:9-53
+27        <activity
+27-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:18:9-24:20
+28            android:name="com.example.imagecompressor.extract"
+28-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:19:13-36
+29            android:exported="false" >
+29-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:20:13-37
+30            <meta-data
+30-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:21:13-23:36
+31                android:name="android.app.lib_name"
+31-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:22:17-52
+32                android:value="" />
+32-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:23:17-33
+33        </activity>
+34        <activity
+34-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:25:9-31:20
+35            android:name="com.example.imagecompressor.compress"
+35-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:26:13-37
+36            android:exported="false" >
+36-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:27:13-37
+37            <meta-data
+37-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:21:13-23:36
+38                android:name="android.app.lib_name"
+38-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:22:17-52
+39                android:value="" />
+39-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:23:17-33
+40        </activity>
+41        <activity
+41-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:32:9-46:20
+42            android:name="com.example.imagecompressor.MainActivity"
+42-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:33:13-41
+43            android:exported="true"
+43-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:34:13-36
+44            android:label="@string/app_name"
+44-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:35:13-45
+45            android:theme="@style/Theme.ImageCompressor.NoActionBar" >
+45-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:36:13-69
+46            <intent-filter>
+46-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:37:13-41:29
+47                <action android:name="android.intent.action.MAIN" />
+47-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:38:17-69
+47-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:38:25-66
+48
+49                <category android:name="android.intent.category.LAUNCHER" />
+49-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:40:17-77
+49-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:40:27-74
+50            </intent-filter>
+51
+52            <meta-data
+52-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:21:13-23:36
+53                android:name="android.app.lib_name"
+53-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:22:17-52
+54                android:value="" />
+54-->C:\Users\Manish\AndroidStudioProjects\ImageCompressor\app\src\main\AndroidManifest.xml:23:17-33
+55        </activity>
+56
+57        <provider
+57-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Manish\.gradle\caches\transforms-3\c03fa7bc00a04a375204b573f0966d9f\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+58            android:name="androidx.startup.InitializationProvider"
+58-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Manish\.gradle\caches\transforms-3\c03fa7bc00a04a375204b573f0966d9f\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
+59            android:authorities="com.example.imagecompressor.androidx-startup"
+59-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Manish\.gradle\caches\transforms-3\c03fa7bc00a04a375204b573f0966d9f\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
+60            android:exported="false" >
+60-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Manish\.gradle\caches\transforms-3\c03fa7bc00a04a375204b573f0966d9f\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
+61            <meta-data
+61-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Manish\.gradle\caches\transforms-3\c03fa7bc00a04a375204b573f0966d9f\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+62                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+62-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Manish\.gradle\caches\transforms-3\c03fa7bc00a04a375204b573f0966d9f\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
+63                android:value="androidx.startup" />
+63-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Manish\.gradle\caches\transforms-3\c03fa7bc00a04a375204b573f0966d9f\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
+64            <meta-data
+64-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Manish\.gradle\caches\transforms-3\0ce9e5f033589fdf0ab757f82f7808ec\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+65                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+65-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Manish\.gradle\caches\transforms-3\0ce9e5f033589fdf0ab757f82f7808ec\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+66                android:value="androidx.startup" />
+66-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Manish\.gradle\caches\transforms-3\0ce9e5f033589fdf0ab757f82f7808ec\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+67        </provider>
+68    </application>
+69
+70</manifest>
