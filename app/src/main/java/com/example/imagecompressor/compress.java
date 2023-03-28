@@ -12,6 +12,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.OpenableColumns;
 import android.text.format.Formatter;
 import android.util.Log;
@@ -21,7 +22,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.BitSet;
 import java.util.HashMap;
@@ -34,6 +38,7 @@ public class compress extends AppCompatActivity {
     private Bitmap bmap;
     private boolean selected = false;
     private TextView infoTxt;
+    String imgName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +81,7 @@ public class compress extends AppCompatActivity {
                     assert returnCursor != null;
                     int nameIndex = returnCursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
                     returnCursor.moveToFirst();
-                    String imgName = returnCursor.getString(nameIndex);
+                    imgName = returnCursor.getString(nameIndex);
                     returnCursor.close();
                     bmap = BitmapFactory.decodeStream(imageStream);
                     selected = true;
@@ -121,7 +126,7 @@ public class compress extends AppCompatActivity {
                 int blue = Color.blue(color);
                 int green = Color.green(color);
                 String code =  codes.get(getKey(red,green,blue));
-                for(int k = 0;k < codes.size();k++){
+                for(int k = 0;k < code.length();k++){
                     char c = code.charAt(k);
                     if(c == '1'){
                         bits.set(bitIndex);
@@ -189,6 +194,29 @@ public class compress extends AppCompatActivity {
             BitSet bits = encodeImage(bmap,codes);
 
             //Save File to the Storage
+            //Create a filename
+            File sDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+            File file = new File(sDir, imgName);
+
+            //Write to the file
+            try (FileOutputStream out = new FileOutputStream(file)) {
+                byte[] bytes = bits.toByteArray();
+                out.write(bytes);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            //Intent to notify media scanner
+            Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+            Uri contentUri = Uri.fromFile(file);
+            mediaScanIntent.setData(contentUri);
+            this.sendBroadcast(mediaScanIntent);
+
+            // Send an intent to share the file
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("*/*");
+            shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
+            this.startActivity(Intent.createChooser(shareIntent, "Share file using:"));
 
         }
     }
